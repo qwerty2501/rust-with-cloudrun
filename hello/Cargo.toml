@@ -1,0 +1,16 @@
+[package]
+authors = ["qwerty2501 <qwerty2501@live.jp>"]
+autobenches = true
+autobins = true
+autoexamples = true
+autotests = true
+categories = []
+edition = "2018"
+keywords = []
+name = "hello"
+version = "0.1.0"
+
+
+[dependencies]
+actix-web = "3"
+

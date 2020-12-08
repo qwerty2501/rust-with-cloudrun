@@ -19,7 +19,6 @@ RUN cargo build --release --bin hello
 
 FROM rust as runtime
 WORKDIR app
-EXPOSE 8080
 COPY --from=builder /app/target/release/hello /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/hello"]
 

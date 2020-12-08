@@ -1,4 +1,5 @@
 use actix_web::{get, web, App, HttpServer, Responder};
+use std::env;
 
 #[get("/{id}/{name}/index.html")]
 async fn index(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
@@ -7,8 +8,9 @@ async fn index(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responde
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    let port = env::var("PORT").unwrap_or_else(|_|"8080".to_string());
     HttpServer::new(|| App::new().service(index))
-        .bind("0.0.0.0:8080")?
+        .bind(format!("0.0.0.0:{}",port))?
         .run()
         .await
 }
